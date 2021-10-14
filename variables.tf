@@ -119,3 +119,10 @@ variable "master_user_arn" {
   default     = ""
   description = ""
 }
+
+variable "zone_awareness_enabled" {
+  type    = bool
+  default = false
+
+}
+

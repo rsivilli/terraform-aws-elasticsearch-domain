@@ -89,6 +89,7 @@ No modules.
 | <a name="input_tls_security_policy"></a> [tls\_security\_policy](#input\_tls\_security\_policy) | The name of the TLS security policy that needs to be applied to the HTTPS endpoint. Valid values: Policy-Min-TLS-1-0-2019-07 and Policy-Min-TLS-1-2-2019-07. Terraform will only perform drift detection if a configuration value is provided. | `string` | `"Policy-Min-TLS-1-2-2019-07"` | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | The size of EBS volumes attached to data nodes (in GB). Required if ebs\_enabled is set to true. | `number` | `20` | no |
 | <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The type of EBS volumes attached to data nodes. | `string` | `"gp2"` | no |
+| <a name="input_zone_awareness_enabled"></a> [zone\_awareness\_enabled](#input\_zone\_awareness\_enabled) | n/a | `bool` | `false` | no |
 
 ## Outputs
 

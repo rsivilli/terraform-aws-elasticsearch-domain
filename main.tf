@@ -81,7 +81,8 @@ data "aws_iam_policy_document" "access_policies" {
 
 resource "aws_elasticsearch_domain" "main" {
 
-  access_policies = length(var.access_policies) > 0 ? var.access_policies : data.aws_iam_policy_document.access_policies.json
+  access_policies        = length(var.access_policies) > 0 ? var.access_policies : data.aws_iam_policy_document.access_policies.json
+  zone_awareness_enabled = var.zone_awareness_enabled
 
   cluster_config {
     instance_count = var.instance_count
