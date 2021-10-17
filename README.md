@@ -97,4 +97,5 @@ No modules.
 |------|-------------|
 | <a name="output_es_arn"></a> [es\_arn](#output\_es\_arn) | n/a |
 | <a name="output_es_endpoint"></a> [es\_endpoint](#output\_es\_endpoint) | n/a |
+| <a name="output_kibana_endpoint"></a> [kibana\_endpoint](#output\_kibana\_endpoint) | n/a |
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
