@@ -160,7 +160,7 @@ data "aws_iam_policy_document" "es_logs" {
   }
   statement {
     actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
-    resources = ["arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", namingprexfix)}", "arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", namingprexfix)}*"]
+    resources = ["arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}", "arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}*"]
   }
 }
 
