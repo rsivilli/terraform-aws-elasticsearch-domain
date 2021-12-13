@@ -167,7 +167,7 @@ data "aws_iam_policy_document" "es_logs" {
 
 resource "aws_cloudwatch_log_resource_policy" "es" {
   policy_document = data.aws_iam_policy_document.es_logs.json
-  policy_name     = format("%s-cloudwatch-es", local.name_prefix)
+  policy_name     = format("%s-cloudwatch-es", local.namingprexfix)
 
 
 }
