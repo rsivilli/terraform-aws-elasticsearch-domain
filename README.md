@@ -58,9 +58,12 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [aws_cloudwatch_log_group.es](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
+| [aws_cloudwatch_log_resource_policy.es](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_resource_policy) | resource |
 | [aws_elasticsearch_domain.main](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/elasticsearch_domain) | resource |
 | [aws_caller_identity.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/caller_identity) | data source |
 | [aws_iam_policy_document.access_policies](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
+| [aws_iam_policy_document.es_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/iam_policy_document) | data source |
 | [aws_partition.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/partition) | data source |
 | [aws_region.current](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/region) | data source |
 
@@ -85,7 +88,7 @@ No modules.
 | <a name="input_master_user_arn"></a> [master\_user\_arn](#input\_master\_user\_arn) | n/a | `string` | `""` | no |
 | <a name="input_security_group_ids"></a> [security\_group\_ids](#input\_security\_group\_ids) | List of VPC Security Group IDs to be applied to the Elasticsearch domain endpoints. If omitted, the default Security Group for the VPC will be used. | `list(string)` | `null` | no |
 | <a name="input_subnet_ids"></a> [subnet\_ids](#input\_subnet\_ids) | List of VPC Subnet IDs for the Elasticsearch domain endpoints to be created in. | `list(string)` | `[]` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags applied to the KMS key. | `map(string)` | `{}` | no |
+| <a name="input_tags"></a> [tags](#input\_tags) | n/a | <pre>object({<br>    Project     = string<br>    Environment = string<br>    Application = string<br>  })</pre> | n/a | yes |
 | <a name="input_tls_security_policy"></a> [tls\_security\_policy](#input\_tls\_security\_policy) | The name of the TLS security policy that needs to be applied to the HTTPS endpoint. Valid values: Policy-Min-TLS-1-0-2019-07 and Policy-Min-TLS-1-2-2019-07. Terraform will only perform drift detection if a configuration value is provided. | `string` | `"Policy-Min-TLS-1-2-2019-07"` | no |
 | <a name="input_volume_size"></a> [volume\_size](#input\_volume\_size) | The size of EBS volumes attached to data nodes (in GB). Required if ebs\_enabled is set to true. | `number` | `20` | no |
 | <a name="input_volume_type"></a> [volume\_type](#input\_volume\_type) | The type of EBS volumes attached to data nodes. | `string` | `"gp2"` | no |

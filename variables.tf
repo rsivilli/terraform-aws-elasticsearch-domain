@@ -52,9 +52,11 @@ variable "subnet_ids" {
 }
 
 variable "tags" {
-  type        = map(string)
-  description = "Tags applied to the KMS key."
-  default     = {}
+  type = object({
+    Project     = string
+    Environment = string
+    Application = string
+  })
 }
 
 variable "tls_security_policy" {
@@ -126,3 +128,9 @@ variable "zone_awareness_enabled" {
 
 }
 
+locals {
+  project       = var.tags.Project
+  environment   = var.tags.Environment
+  application   = var.tags.Application
+  namingprexfix = "${local.project}-${local.environment}-${local.application}"
+}

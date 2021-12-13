@@ -136,4 +136,37 @@ resource "aws_elasticsearch_domain" "main" {
       master_user_arn = var.master_user_arn
     }
   }
+  log_publishing_options {
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.es.arn
+    log_type                 = "ES_APPLICATION_LOGS"
+  }
+  log_publishing_options {
+    cloudwatch_log_group_arn = aws_cloudwatch_log_group.es.arn
+    log_type                 = "AUDIT_LOGS"
+  }
+}
+
+
+
+resource "aws_cloudwatch_log_group" "es" {
+  name              = format("%s-es-cloudwatch", local.namingprexfix)
+  retention_in_days = 1
+}
+
+data "aws_iam_policy_document" "es_logs" {
+  principals {
+    type        = "Service"
+    identifiers = ["es.amazonaws.com"]
+  }
+  statement {
+    actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
+    resources = ["arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", namingprexfix)}", "arn:${aws_partition.current.name}:logs:${aws_region.current.name}:${aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", namingprexfix)}*"]
+  }
+}
+
+resource "aws_cloudwatch_log_resource_policy" "es" {
+  policy_document = aws_iam_policy_document.es_logs.json
+  policy_name     = format("%s-cloudwatch-es", local.name_prefix)
+
+
 }
