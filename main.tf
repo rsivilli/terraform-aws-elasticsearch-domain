@@ -154,13 +154,14 @@ resource "aws_cloudwatch_log_group" "es" {
 }
 
 data "aws_iam_policy_document" "es_logs" {
-  principals {
-    type        = "Service"
-    identifiers = ["es.amazonaws.com"]
-  }
+
   statement {
     actions   = ["logs:PutLogEvents", "logs:PutLogEventsBatch", "logs:CreateLogStream"]
-    resources = ["arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}", "arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}*"]
+    resources = ["arn:${data.aws_partition.current.id}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}", "arn:${data.aws_partition.current.i}:logs:${data.aws_region.current.name}:${data.aws_caller_identity.current.id}:log-group:${format("%s-es-cloudwatch", local.namingprexfix)}*"]
+    principals {
+      type        = "Service"
+      identifiers = ["es.amazonaws.com"]
+    }
   }
 }
 
